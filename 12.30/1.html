@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="d1">
+        <div id="d2"></div>
+    </div>
+    <div id="d3">
+        <div id="d4">
+            <div id="d6"></div>
+        </div>
+        <div id="d5"></div>
+    </div>
+
+    <script>
+        function $(id) {
+            return document.getElementById(id);
+        }
+
+        console.log($('d1').contains($('d2')));
+        console.log($('d1').contains($('d3')));
+        console.log($('d3').contains($('d6')));
+        console.log($('d1').contains($('d1'))); // true
+    </script>
+</body>
+
+</html>
