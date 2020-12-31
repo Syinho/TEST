@@ -1,0 +1,71 @@
+<!-- keydown keypress(textInput) keyup 事件 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>分别在页面的输入框和其它空白处键入<i style="color: red;">字符键</i>与<i style="color: red;">非字符键</i></h1>
+    <h2>打开<kbd>F12</kbd>查看打印信息</h2>
+    <input type="text" id="i1">
+    <script>
+        let i1 = document.getElementById('i1');
+        let i = 1;
+
+        function fn1(e) {
+            e.stopPropagation();
+            console.group('keydown')
+            console.log(`第${i}次按键`);
+            console.log(`keydown事件触发于:`);
+            console.log(e.target);
+            console.log(`keydown按键字符为：${e.keyCode}`);
+            console.groupEnd();
+        }
+
+        function fn2(e) {
+            e.stopPropagation();
+            console.group('keypress')
+            console.log(`第${i}次按键`);
+            console.log(`keypress事件触发于:`);
+            console.log(e.target);
+            console.log(`${e.charCode}`);
+            console.log(`${String.fromCharCode(e.charCode)}`);
+            console.groupEnd();
+        }
+
+        function fn3(e) {
+            e.stopPropagation();
+            console.group('textInput')
+            console.log(`第${i}次按键`);
+            console.log(`textInput事件触发于:`);
+            console.log(e.target);
+            console.log(e.data);
+            console.groupEnd();
+        }
+
+        function fn4(e) {
+            e.stopPropagation();
+            console.group('keyup')
+            console.log(`第${i}次按键`);
+            console.log(`keyup事件触发于:`);
+            console.log(e.target);
+            console.log(`keyup按键字符为：${e.keyCode}`);
+            console.groupEnd();
+            i++;
+        }
+        i1.addEventListener('keydown', fn1, false);
+        i1.addEventListener('keypress', fn2, false);
+        i1.addEventListener('textInput', fn3, false);
+        i1.addEventListener('keyup', fn4, false);
+        document.addEventListener('keydown', fn1, false);
+        document.addEventListener('keypress', fn2, false);
+        document.addEventListener('textInput', fn3, false);
+        document.addEventListener('keyup', fn4, false);
+    </script>
+</body>
+
+</html>
